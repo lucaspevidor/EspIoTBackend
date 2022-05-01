@@ -1,4 +1,4 @@
-import { PrismaClient } from '@prisma/client';
+import PrismaClient from '../database/client';
 import { Request, Response } from 'express';
 
 class UserController {
@@ -6,7 +6,7 @@ class UserController {
 		req: Request,
 		res: Response
 	): Promise<Response> => {
-		const prisma = new PrismaClient();
+		const prisma = PrismaClient;
 
 		const { name, email } = req.body;
 

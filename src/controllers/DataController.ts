@@ -1,9 +1,9 @@
 import { Request, Response } from 'express';
-import { PrismaClient } from '@prisma/client';
+import PrismaClient from '../database/client';
 
 class DataController {
 	public async create (req: Request, res: Response): Promise<Response> {
-		const prisma = new PrismaClient();
+		const prisma = PrismaClient;
 
 		const { mac } = req.params;
 		const { data } = req.body;

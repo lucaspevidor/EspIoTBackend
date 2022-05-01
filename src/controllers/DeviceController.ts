@@ -1,9 +1,9 @@
 import { Request, Response } from 'express';
-import { PrismaClient } from '@prisma/client';
+import PrismaClient from '../database/client';
 
 class DeviceController {
 	public async create (req: Request, res: Response): Promise<Response> {
-		const prisma = new PrismaClient();
+		const prisma = PrismaClient;
 
 		const { mac, name } = req.body;
 		if (!mac || !name) {
@@ -42,7 +42,7 @@ class DeviceController {
 	}
 
 	public async get (req: Request, res: Response): Promise<Response> {
-		const prisma = new PrismaClient();
+		const prisma = PrismaClient;
 
 		const { mac } = req.params;
 		const { id } = req.user;
@@ -64,7 +64,7 @@ class DeviceController {
 	}
 
 	public async getAll (req: Request, res: Response): Promise<Response> {
-		const prisma = new PrismaClient();
+		const prisma = PrismaClient;
 
 		const { id } = req.user;
 
@@ -84,7 +84,7 @@ class DeviceController {
 	}
 
 	public async delete (req: Request, res: Response): Promise<Response> {
-		const prisma = new PrismaClient();
+		const prisma = PrismaClient;
 
 		const { mac } = req.params;
 		const { id } = req.user;

@@ -1,4 +1,4 @@
-import { PrismaClient } from '@prisma/client';
+import PrismaClient from '../database/client';
 import { Request, Response } from 'express';
 import jsonwebtoken from 'jsonwebtoken';
 
@@ -7,7 +7,7 @@ class AuthController {
 		req: Request,
 		res: Response
 	): Promise<Response> => {
-		const prisma = new PrismaClient();
+		const prisma = PrismaClient;
 		const { name, email } = req.body;
 		const userFound = await prisma.user.findFirst({
 			where: {
