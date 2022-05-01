@@ -1,7 +1,7 @@
 import { PrismaClient } from '@prisma/client';
 import { Request, Response } from 'express';
 
-export default class UserController {
+class UserController {
 	public createUser = async (
 		req: Request,
 		res: Response
@@ -33,3 +33,5 @@ export default class UserController {
 		return res.json(user);
 	};
 }
+
+export default new UserController();
