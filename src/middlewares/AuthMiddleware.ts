@@ -1,7 +1,7 @@
 import jsonwebtoken from 'jsonwebtoken';
 import { Request, Response, NextFunction } from 'express';
 
-export default class AuthMiddleware {
+class AuthMiddleware {
 	public authenticate = async (
 		req: Request,
 		res: Response,
@@ -32,3 +32,5 @@ export default class AuthMiddleware {
 		}
 	};
 }
+
+export default new AuthMiddleware();
