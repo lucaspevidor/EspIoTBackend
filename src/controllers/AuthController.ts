@@ -2,7 +2,7 @@ import { PrismaClient } from '@prisma/client';
 import { Request, Response } from 'express';
 import jsonwebtoken from 'jsonwebtoken';
 
-export default class AuthController {
+class AuthController {
 	public authenticate = async (
 		req: Request,
 		res: Response
@@ -30,7 +30,7 @@ export default class AuthController {
 		// Authenticate user with jsonWebToken
 		const token = jsonwebtoken.sign(
 			{
-				userId: userFound.id,
+				id: userFound.id,
 				email: userFound.email,
 				name: userFound.name
 			},
@@ -50,3 +50,5 @@ export default class AuthController {
 		});
 	};
 }
+
+export default new AuthController();
