@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import { PrismaClient } from '@prisma/client';
 
-export default class DeviceController {
+class DeviceController {
 	public async create (req: Request, res: Response): Promise<Response> {
 		const prisma = new PrismaClient();
 
@@ -12,7 +12,7 @@ export default class DeviceController {
 			});
 		}
 
-		const deviceFound = prisma.device.findFirst({
+		const deviceFound = await prisma.device.findFirst({
 			where: {
 				mac
 			}
@@ -125,3 +125,5 @@ export default class DeviceController {
 		});
 	}
 }
+
+export default new DeviceController();
